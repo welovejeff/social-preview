@@ -183,7 +183,14 @@ function RightSidebar({ selectedPlatform, setSelectedPlatform }: RightSidebarPro
   )
 }
 
-function MainContent({ selectedPlatform, previewImage, setPreviewImage }) {
+// Define the types for the props
+type MainContentProps = {
+  selectedPlatform: string; // or the appropriate type
+  previewImage: string | null; // or the appropriate type
+  setPreviewImage: React.Dispatch<React.SetStateAction<string | null>>; // or the appropriate type
+}
+
+function MainContent({ selectedPlatform, previewImage, setPreviewImage }: MainContentProps) {
   const { toast } = useToast()
 
   const onDrop = React.useCallback((acceptedFiles: File[]) => {
