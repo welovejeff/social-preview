@@ -157,7 +157,13 @@ function LeftSidebar() {
   )
 }
 
-function RightSidebar({ selectedPlatform, setSelectedPlatform }) {
+// Define the types for the props
+type RightSidebarProps = {
+  selectedPlatform: string; // or the appropriate type
+  setSelectedPlatform: React.Dispatch<React.SetStateAction<string>>; // or the appropriate type
+}
+
+function RightSidebar({ selectedPlatform, setSelectedPlatform }: RightSidebarProps) {
   return (
     <div className="w-[300px] border-l p-4">
       <h2 className="mb-4 text-lg font-semibold">Preview Options</h2>
@@ -165,9 +171,9 @@ function RightSidebar({ selectedPlatform, setSelectedPlatform }) {
         {platforms.map((platform) => (
           <Button
             key={platform.id}
-            variant={selectedPlatform.id === platform.id ? "default" : "outline"}
+            variant={selectedPlatform === platform.id ? "default" : "outline"}
             className="w-full justify-start"
-            onClick={() => setSelectedPlatform(platform)}
+            onClick={() => setSelectedPlatform(platform.id)}
           >
             {platform.name}
           </Button>
@@ -259,7 +265,7 @@ function MainContent({ selectedPlatform, previewImage, setPreviewImage }) {
 }
 
 export function BlockPage() {
-  const [selectedPlatform, setSelectedPlatform] = React.useState(platforms[0])
+  const [selectedPlatform, setSelectedPlatform] = React.useState(platforms[0].id)
   const [previewImage, setPreviewImage] = React.useState<string | null>(null)
 
   return (
