@@ -57,6 +57,7 @@ import {
 // Add these imports at the top of the file
 import LinkedInReaction from './linkedin-reaction';
 import LinkedInReactionsSprite from './linkedin-reactions-sprite';
+import Image from 'next/image'
 
 // Sample data structure
 const sampleData = {
@@ -237,7 +238,13 @@ function RightSidebar({
         />
         {profileImage && (
           <div className="flex items-center mt-2">
-            <img src={profileImage} alt="Profile Preview" className="h-8 w-8 rounded-full mr-2" />
+            <Image 
+              src={profileImage}
+              alt="Profile"
+              width={32}
+              height={32}
+              className="rounded-full mr-2"
+            />
             <span className="text-sm">{brandName}</span>
           </div>
         )}
@@ -500,7 +507,13 @@ function PlatformSpecificUI({
           <div className="flex items-center mb-2">
             <div className="flex items-center">
               {profileImage ? (
-                <img src={profileImage} alt="Profile" className="h-8 w-8 rounded-full mr-2" />
+                <Image 
+                  src={profileImage}
+                  alt="Profile"
+                  width={32}
+                  height={32}
+                  className="rounded-full mr-2"
+                />
               ) : (
                 <div className="h-8 w-8 rounded-full bg-gray-300 mr-2"></div>
               )}
@@ -525,10 +538,12 @@ function PlatformSpecificUI({
             <>
               <div className="relative w-full mb-2">
                 {previewMedia[currentMediaIndex].type === 'image' ? (
-                  <img 
+                  <Image 
                     src={previewMedia[currentMediaIndex].url} 
                     alt={`Preview ${currentMediaIndex + 1}`} 
                     className="w-full rounded object-cover" 
+                    width={300}
+                    height={300}
                   />
                 ) : (
                   <video 
@@ -664,10 +679,12 @@ function PlatformSpecificUI({
                   playsInline
                 />
               ) : (
-                <img 
+                <Image 
                   src={previewMedia[currentMediaIndex].url}
                   alt={`Preview ${currentMediaIndex + 1}`}
                   className="h-full w-full object-cover"
+                  width={400}
+                  height={300}
                 />
               )}
             </div>
@@ -679,7 +696,13 @@ function PlatformSpecificUI({
             <div className="flex-1 flex flex-col justify-end p-4">
               <div className="flex items-center mb-2">
                 {profileImage ? (
-                  <img src={profileImage} alt="Profile" className="h-8 w-8 rounded-full mr-2 border-2 border-white" />
+                  <Image 
+                    src={profileImage}
+                    alt="Profile"
+                    width={32}
+                    height={32}
+                    className="rounded-full mr-2 border-2 border-white"
+                  />
                 ) : (
                   <div className="h-8 w-8 rounded-full bg-gray-300 mr-2 border-2 border-white"></div>
                 )}
@@ -780,7 +803,13 @@ function PlatformSpecificUI({
           <div className="flex items-start justify-between mb-3">
             <div className="flex">
               {profileImage ? (
-                <img src={profileImage} alt="Profile" className="h-10 w-10 rounded-full mr-3" />
+                <Image 
+                  src={profileImage}
+                  alt="Profile"
+                  width={40}
+                  height={40}
+                  className="rounded-full mr-3"
+                />
               ) : (
                 <div className="h-10 w-10 rounded-full bg-gray-300 mr-3"></div>
               )}
@@ -809,7 +838,7 @@ function PlatformSpecificUI({
               <textarea
                 value={postCopy}
                 onChange={handleInput}
-                placeholder="What's on your mind?"
+                placeholder="What&apos;s on your mind?"
                 className="absolute inset-0 w-full p-0 border-none focus:outline-none focus:ring-0 resize-none bg-transparent placeholder:text-gray-400 text-transparent caret-gray-700 z-10"
                 style={{
                   overflow: 'hidden',
@@ -829,7 +858,7 @@ function PlatformSpecificUI({
                 }}
               >
                 {postCopy ? renderFormattedText(postCopy) : (
-                  <span className="text-gray-400">What's on your mind?</span>
+                  <span className="text-gray-400">What&apos;s on your mind?</span>
                 )}
               </div>
             </div>
@@ -859,10 +888,12 @@ function PlatformSpecificUI({
                     if (previewMedia.length === 3 && index === 0) {
                       return (
                         <div key={index} className="col-span-2">
-                          <img
+                          <Image
                             src={media.url}
                             alt={`Preview ${index + 1}`}
                             className="w-full h-[300px] object-cover rounded-t-lg"
+                            width={300}
+                            height={300}
                           />
                         </div>
                       );
@@ -874,17 +905,19 @@ function PlatformSpecificUI({
                           <div className="absolute inset-0 bg-black/50 flex items-center justify-center rounded-lg">
                             <span className="text-white text-xl font-semibold">+{previewMedia.length - 4}</span>
                           </div>
-                          <img
+                          <Image
                             src={media.url}
                             alt={`Preview ${index + 1}`}
                             className="w-full h-[200px] object-cover rounded-lg"
+                            width={300}
+                            height={200}
                           />
                         </div>
                       );
                     }
 
                     return (
-                      <img
+                      <Image
                         key={index}
                         src={media.url}
                         alt={`Preview ${index + 1}`}
@@ -895,6 +928,8 @@ function PlatformSpecificUI({
                           previewMedia.length >= 5 ? 'h-[200px]' :
                           'h-[300px]'
                         } object-cover rounded-lg`}
+                        width={300}
+                        height={300}
                       />
                     );
                   })}
@@ -993,10 +1028,12 @@ function PlatformSpecificUI({
                   playsInline
                 />
               ) : (
-                <img 
+                <Image 
                   src={previewMedia[currentMediaIndex].url}
                   alt={`Preview ${currentMediaIndex + 1}`}
                   className="w-full h-auto max-h-full object-contain"
+                  width={400}
+                  height={300}
                 />
               )}
             </div>
@@ -1110,7 +1147,13 @@ function PlatformSpecificUI({
           <div className="flex items-start justify-between mb-3">
             <div className="flex">
               {profileImage ? (
-                <img src={profileImage} alt="Profile" className="h-10 w-10 rounded-full mr-3" />
+                <Image 
+                  src={profileImage}
+                  alt="Profile"
+                  width={40}
+                  height={40}
+                  className="rounded-full mr-3"
+                />
               ) : (
                 <div className="h-10 w-10 rounded-full bg-gray-300 mr-3" />
               )}
@@ -1170,10 +1213,12 @@ function PlatformSpecificUI({
                         Your browser does not support the video tag.
                       </video>
                     ) : (
-                      <img
+                      <Image
                         src={media.url}
                         alt={`Preview ${index + 1}`}
                         className="w-full h-full object-cover"
+                        width={300}
+                        height={300}
                       />
                     )}
                   </div>
@@ -1235,7 +1280,13 @@ function PlatformSpecificUI({
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center">
               {profileImage ? (
-                <img src={profileImage} alt="Profile" className="h-8 w-8 rounded-full mr-2" />
+                <Image 
+                  src={profileImage}
+                  alt="Profile"
+                  width={32}
+                  height={32}
+                  className="rounded-full mr-2"
+                />
               ) : (
                 <div className="h-8 w-8 rounded-full bg-gray-300 mr-2" />
               )}
@@ -1289,10 +1340,12 @@ function PlatformSpecificUI({
                         Your browser does not support the video tag.
                       </video>
                     ) : (
-                      <img
+                      <Image
                         src={media.url}
                         alt={`Preview ${index + 1}`}
                         className="w-full h-full object-cover"
+                        width={300}
+                        height={300}
                       />
                     )}
                   </div>
@@ -1366,7 +1419,13 @@ function PlatformSpecificUI({
           <div className="flex items-start justify-between mb-3">
             <div className="flex">
               {profileImage ? (
-                <img src={profileImage} alt="Profile" className="h-12 w-12 rounded-full mr-3" />
+                <Image 
+                  src={profileImage}
+                  alt="Profile"
+                  width={48}
+                  height={48}
+                  className="rounded-full mr-3"
+                />
               ) : (
                 <div className="h-12 w-12 rounded-full bg-gray-300 mr-3" />
               )}
@@ -1426,10 +1485,12 @@ function PlatformSpecificUI({
                   Your browser does not support the video tag.
                 </video>
               ) : (
-                <img
+                <Image
                   src={previewMedia[currentMediaIndex].url}
                   alt={`Preview ${currentMediaIndex + 1}`}
                   className="w-full h-full object-cover"
+                  width={400}
+                  height={300}
                 />
               )}
               {previewMedia.length > 1 && (
@@ -1569,10 +1630,12 @@ function PlatformSpecificUI({
                     Your browser does not support the video tag.
                   </video>
                 ) : (
-                  <img
+                  <Image
                     src={previewMedia[currentMediaIndex].url}
                     alt={`Pin preview ${currentMediaIndex + 1}`}
                     className="w-full h-full object-cover"
+                    width={380}
+                    height={253}
                   />
                 )}
                 
@@ -1651,10 +1714,12 @@ function PlatformSpecificUI({
                 <div className="flex items-center justify-between mb-1">
                   <div className="flex items-center">
                     {profileImage ? (
-                      <img 
+                      <Image 
                         src={profileImage} 
                         alt={brandName} 
                         className="w-8 h-8 rounded-full mr-2"
+                        width={32}
+                        height={32}
                       />
                     ) : (
                       <div className="w-8 h-8 rounded-full bg-gray-200 mr-2" />

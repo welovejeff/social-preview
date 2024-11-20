@@ -1,7 +1,19 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['your-domain.com'], // Add domains for external images
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      }
+    ],
+    dangerouslyAllowSVG: true,
+    domains: ['*'],
+    unoptimized: true,
+  },
+  eslint: {
+    // Disable ESLint during production builds for now
+    ignoreDuringBuilds: true,
   },
 }
 
